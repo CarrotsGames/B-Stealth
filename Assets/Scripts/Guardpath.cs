@@ -3,16 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Guardpath : MonoBehaviour {
+	//The guard calls this event when the player is in the spotlight for more than .5 seconds
+	public static event System.Action OnGuardHasSpottedPlayer;
+
 	// speed is how fast the gaurd moves
 	public float speed = 5;
 	//waittime is how long the guard waits at each checkpoint
 	public float waitTime = .3f;
 	//turnspeed is how fast the guard turns at each checkpoint
 	public float turnSpeed = 90;
+	//Time before player losses if spoted
+	public float timeToSpotPlayer = .5f;
+
+
+	//These  setting are the Spotlights Distance
+	public Light spotlight;
+	public float viewDistance;
+	//these setting are for the guards Mask and Angle
+	public LayerMask viewMask;
+	float viewAngle;
+	float playerVisibleTimer;
+
 	//pathholder is the path the guard is going to take
 	public Transform pathHolder;
+	Transform player;
+	//this is the defult color of the spotlight
+	Color originalSpotLightColour;
 
+	//this checks if the player is in range and sets the default color of the spotlight
 	void Start() {
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		viewAngle = spotlight.spotAngle;
+		originalSpotLightColour = spotlight.color;
+
 		//this piece allows the guard to know where the checkpoints are and the path to take while
 		//also making sure it isnt sunk in the ground
 		Vector3[] waypoints = new Vector3[pathHolder.childCount];
@@ -24,6 +47,39 @@ public class Guardpath : MonoBehaviour {
 		StartCoroutine (FollowPath (waypoints));
 
 	}
+	//this makes it so if the player isnt in the spotlight it will be normal and if the
+	//player is in the spotlight it will be red 
+	void Update() {
+		if (CanSeePlayer ()){
+			playerVisibleTimer += Time.deltaTime;
+		}else {
+			playerVisibleTimer -= Time.deltaTime;
+		}
+		playerVisibleTimer = Mathf.Clamp (playerVisibleTimer, 0, timeToSpotPlayer);
+		spotlight.color = Color.Lerp (originalSpotLightColour, Color.red, playerVisibleTimer / timeToSpotPlayer);
+
+		if (playerVisibleTimer >= timeToSpotPlayer) {
+			if (OnGuardHasSpottedPlayer != null) {
+				OnGuardHasSpottedPlayer ();
+			}
+		}
+	}
+
+	//CanSeePlayer makes it so that if the player is in the guards view angle than the guard 
+	//can see the player and if not then it can't see the player
+	bool CanSeePlayer() {
+		if (Vector3.Distance(transform.position,player.position)< viewDistance) {
+			Vector3 dirToPlayer = (player.position - transform.position).normalized;
+			float angleBetweenGuardAndPlayer = Vector3.Angle (transform.forward, dirToPlayer);
+			if(angleBetweenGuardAndPlayer < viewAngle / 2f) {
+				if (!Physics.Linecast(transform.position,player.position, viewMask)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	//this locates the path and tells the guard to look at each point before moving to it
 	IEnumerator FollowPath(Vector3[] waypoints) {
 		transform.position = waypoints [0];
@@ -67,5 +123,9 @@ public class Guardpath : MonoBehaviour {
 			previousPosition = waypoint.position;
 		}
 		Gizmos.DrawLine (previousPosition, startPosition);
+
+		Gizmos.color = Color.blue;
+		Gizmos.DrawRay (transform.position, transform.forward * viewDistance);
+
 	}
 }

@@ -1,25 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BabyMovement : MonoBehaviour {
 	//speed is how fast the player will move
 	public float speed = 6.0f;
-	//gravity is how much gravity is on the player
-	public float gravity = 20.0f;
-	//
-	private Vector3 moveDirection = Vector3.zero;
+
+	public Text countText;
+	public Text escapeText;
+	private int count;
+
+
+	void Start () {
+		count = 1;
+		SetCountText ();
+		escapeText.text = "";
+	}
+		
 	//the if statement means if the player is on the ground and the player trys to move the character will move in the direction the player wants to go
 	void Update () {
-		CharacterController controller = GetComponent<CharacterController> ();
-		if (controller.isGrounded) {
-			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
-			moveDirection = transform.TransformDirection (moveDirection);
-			moveDirection *= speed;
+		if (Input.GetKey (KeyCode.A)) {
+			transform.position = transform.position += Vector3.forward * speed * Time.deltaTime; //new Vector3 (0, 0, 0.1f);
 		}
-
-		moveDirection.y -= gravity * Time.deltaTime;
-		controller.Move (moveDirection * Time.deltaTime);
+		if (Input.GetKey (KeyCode.D)) {
+			transform.position = transform.position += Vector3.back * speed * Time.deltaTime;
+		}
+		if (Input.GetKey (KeyCode.S)) {
+			transform.position = transform.position + Vector3.left * speed * Time.deltaTime;
+		}
+		if (Input.GetKey (KeyCode.W)) {
+			transform.position = transform.position + Vector3.right * speed * Time.deltaTime;
+		}
 	}
 
 	//OnTriggerEnter means when the player enters the objects trigger it will disapear and deactivate
@@ -28,7 +40,15 @@ public class BabyMovement : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Pick Up"))
 		{
 			other.gameObject.SetActive (false);
+			count = count - 1;
+			SetCountText ();
 		}
 	}
-
+		
+	void SetCountText () {
+		countText.text = "Remaining Iteams Needed:" + count.ToString ();
+		if (count >= 0) {
+			escapeText.text = "Run!";
+		}
+	}
 }

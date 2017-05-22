@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Guardpath : MonoBehaviour {
+public class Guard : MonoBehaviour {
 	//The guard calls this event when the player is in the spotlight for more than .5 seconds
 	public static event System.Action OnGuardHasSpottedPlayer;
 

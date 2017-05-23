@@ -4,30 +4,29 @@ using UnityEngine;
 
 public class ObjectsPickup : MonoBehaviour {
 
-	public float speed;
+	public GameObject doorToOpen;
 
-	private Rigidbody rb;
-
-	void Start ()
-	{
-		rb = GetComponent<Rigidbody>();
-	}
-
-	void FixedUpdate ()
-	{
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
-
-		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-
-		rb.AddForce (movement * speed);
-	}
 
 	void OnTriggerEnter(Collider other) 
 	{
+		if (other.tag == "Player") {
+			//Debug.Log ("Run");
+
+			doorToOpen.SetActive (false);
+			this.gameObject.SetActive (false);
+
+
 		if (other.gameObject.CompareTag ("Pick Up"))
 		{
 			other.gameObject.SetActive (false);
+			}
+		}
+	}
+
+	void OnDrawGizmos () {
+		if (doorToOpen) {
+			Gizmos.color = Color.blue;
+			Gizmos.DrawLine (transform.position, doorToOpen.transform.position);
 		}
 	}
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseGame : MonoBehaviour {
-
 	public Transform canvas;
 
 

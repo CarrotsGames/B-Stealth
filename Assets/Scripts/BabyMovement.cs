@@ -24,7 +24,7 @@ public class BabyMovement : MonoBehaviour {
 		SetCountText ();
 		escapeText.text = "";
 		carrotText.text = "";
-		Guard.OnGuardHasSpottedPlayer += Disabled;
+		GuardVision.OnGuardHasSpottedPlayer += Disabled;
 
 		forward = Camera.main.transform.forward;
 		forward.y = 0;
@@ -80,7 +80,7 @@ public class BabyMovement : MonoBehaviour {
 		}
 	}
 	void OnDestroy(){
-		Guard.OnGuardHasSpottedPlayer -= Disabled;
+		GuardVision.OnGuardHasSpottedPlayer -= Disabled;
 	}
 
 	void Move (){

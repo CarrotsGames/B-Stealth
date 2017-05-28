@@ -10,7 +10,7 @@ public class GameUI : MonoBehaviour {
 
 	//if the player is spotted the Game Lose screen will appear
 	void Start () {
-		Guard.OnGuardHasSpottedPlayer += ShowgameLoseUI;
+		GuardVision.OnGuardHasSpottedPlayer += ShowgameLoseUI;
 		
 	}
 	
@@ -31,6 +31,6 @@ public class GameUI : MonoBehaviour {
 	void OnGameOver(GameObject gameOverUI) {
 		gameLoseUI.SetActive (true);
 		gameIsOver = true;
-		Guard.OnGuardHasSpottedPlayer -= ShowgameLoseUI;
+		GuardVision.OnGuardHasSpottedPlayer -= ShowgameLoseUI;
 	}
 }

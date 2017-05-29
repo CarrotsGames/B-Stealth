@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SaveGame : MonoBehaviour {
+//this script allows the player to exit from the pause menu while ingame
 
+public class QuitInGame : MonoBehaviour {
+	//reference to the player
 	public Transform player;
-
-	void Awake () {
-	//	player.position = new Vector3 (PlayerPrefs.GetFloat ("x"), PlayerPrefs.GetFloat ("y"), PlayerPrefs.GetFloat ("z"));
-	//	player.eulerAngles = new Vector3 (0, PlayerPrefs.GetFloat ("Cam_y"), 0);
-	}
-
+	//SaveGameSetting checks the player position and exits the game
 	public void SaveGameSetting(bool Quit) {
 		
 		PlayerPrefs.SetFloat ("x", player.position.x);
@@ -19,7 +16,7 @@ public class SaveGame : MonoBehaviour {
 		PlayerPrefs.SetFloat ("z", player.position.z);
 		PlayerPrefs.SetFloat ("Cam_y", player.eulerAngles.y);
 		if (Quit) {
-			
+			//the time scale is returned to 1 and the Start Menu is loaded
 			Time.timeScale = 1;
 			SceneManager.LoadScene ("Start Menu");
 		}

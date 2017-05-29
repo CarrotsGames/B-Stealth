@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 97582570f24add74086067efa420da11
-timeCreated: 1495969068
-licenseType: Free
+guid: 480e4dae519e9654bb32fdfe54b7572c
+timeCreated: 1496033768
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Robot
+    4300000: Pillow
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -23,7 +23,7 @@ public class GameUI : MonoBehaviour {
 			//if space is pushed after game over then load main menu
 			if(Input.GetKeyDown (KeyCode.Space)) {
 				//load main menu
-				SceneManager.LoadScene (0);
+				SceneManager.LoadScene (1);
 			}
 			
 		}
@@ -35,8 +35,10 @@ public class GameUI : MonoBehaviour {
 	}
 	//OnGameOver makes it so the game will end and the gameover text will appaer
 	void OnGameOver(GameObject gameOverUI) {
-		gameLoseUI.SetActive (true);
-		gameIsOver = true;
-		EnemyVision.OnEnemyHasSpottedPlayer -= ShowgameLoseUI;
+		if (gameLoseUI) {
+			gameLoseUI.SetActive (true);
+			gameIsOver = true;
+			EnemyVision.OnEnemyHasSpottedPlayer -= ShowgameLoseUI;
+		}
 	}
 }

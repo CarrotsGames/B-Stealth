@@ -5,7 +5,7 @@ using UnityEngine;
 //this script is for the what the enemy can see and how it will interact with the player and the objects in the level
 
 public class EnemyVision : MonoBehaviour {
-	//The guard calls this event when the player is in the spotlight for more than .5 seconds
+	
 	public static event System.Action OnEnemyHasSpottedPlayer;
 
 	//Time before player losses if spoted

@@ -8,13 +8,24 @@ public class CameraController : MonoBehaviour {
 	//this is the offset of the camera and the player
 	private Vector3 offset;
 
-	// Start happens when the game is loaded
+	// Start()
+	//Runs during initialisation
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void Start () {
 		//this is the offset of the camera to the player to stay at a certain distance to the player
 		offset = transform.position - player.transform.position;
 	}
-	
-	// LateUpdate happens at a delayed frame 
+	//  LateUpdate()
+	// Runs after Update function
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void LateUpdate () {
 		//this makes it so the camera will stay with the player
 		transform.position = player.transform.position + offset;

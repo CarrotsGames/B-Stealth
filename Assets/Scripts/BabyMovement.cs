@@ -21,7 +21,13 @@ public class BabyMovement : MonoBehaviour {
 	//disabled will disable something
 	bool disabled;
 
-	//when the game starts then these action will begin
+	//  Start()
+	// Runs during initialisation
+	//Param:
+	//			None
+	//Return:
+	//			Void
+
 	void Start () {
 		//the count is 1
 		count = 1;
@@ -33,14 +39,19 @@ public class BabyMovement : MonoBehaviour {
 		carrotText.text = "";
 		//this means that the guard hasn't spotted the player on spawn
 		EnemyVision.OnEnemyHasSpottedPlayer += Disabled;
-		//this set it so the playe will move up instead of diaganal with movement
+		//this set it so the playe will move up instead of diagonal with movement
 		forward = Camera.main.transform.forward;
 		forward.y = 0;
 		forward = Vector3.Normalize (forward);
 		right = Quaternion.Euler (new Vector3 (0, 90, 0)) * forward;
 }
 		
-	//Update means that this functions are updated every frame
+	// Update ()
+	// Runs every frame
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void Update () {
 		//this make it so if the player is spoted the game will cut off the player controls
 		Vector3 inputDirection = Vector3.zero;
@@ -50,14 +61,24 @@ public class BabyMovement : MonoBehaviour {
 				Move ();
 		}
 	}
-	//Disabled disabled soemthing
+	// Disabled ()
+	//disables functions
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void Disabled () {
 		//disabled is true
 		disabled = true;
 	
 	}
 
-	//OnTriggerEnter means when the player enters the objects trigger it will disapear and deactivate
+	// OnTriggerEnter()
+	//player enters the objects trigger something will happen
+	//Param:
+	//		Collider Other- The Colldier of any objects that pass into this trigger
+	//Return:
+	//			Void
 	void OnTriggerEnter(Collider other) 
 	{
 		// if the player walks into an object that has a tag of Pick Up it will disable the object and add a count to the Text
@@ -69,19 +90,40 @@ public class BabyMovement : MonoBehaviour {
 			SetCountText ();
 		}
 	}
-		//SetCountText check to see if the count is equal to zero and then will activate the run and Carrot text
+	// SetCount()
+	//if the count is equal to zero and then will activate the run and Rocket text
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void SetCountText () {
-		countText.text = "Remaining Iteams Needed:" + count.ToString ();
+		//displays Remaining Items Needed on the screen
+		countText.text = "Remaining Items Needed:" + count.ToString ();
+		//if the count equals 0 or less then display Run and Rocket
 		if (count >= 0) {
 			escapeText.text = "Run!";
-			carrotText.text = "Carrot";
+			carrotText.text = "Rocket";
 		}
 	}
-	//OnDestory disables the player movement when scene
+	// OnDestroy ()
+	// destorys object
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
+
 	void OnDestroy(){
 		EnemyVision.OnEnemyHasSpottedPlayer -= Disabled;
 	}
+	//   Move()
 	//Move allows the player to move correctly with the Isometric camera angle
+	//
+	//Param: 
+	//			None
+	//Return:
+	//			Void
 	void Move (){
 		//this set a new keys and new Vertical and Horizontal key to make the player walk up not right aswell as mediate speed
 	//	Vector3 direction = new Vector3 (Input.GetAxis ("HorizontalKey"), 0, Input.GetAxis ("VerticalKey"));

@@ -27,15 +27,26 @@ public class EnemyVision : MonoBehaviour {
 	//this is the defult color of the spotlight
 	Color originalSpotLightColour;
 
+	// Start()
 	//this checks if the player is in range and sets the default color of the spotlight
+	//Runs during initialisation
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void Start() {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		viewAngle = spotlight.spotAngle;
 		originalSpotLightColour = spotlight.color;
 
 	}
-	//this makes it so if the player isnt in the spotlight it will be normal and if the
-	//player is in the spotlight it will be red 
+	// 		Update ()
+	//runs everyframe
+	// this makes it so if the player isnt in the spotlight it will be normal and if the player is in the spotlight it will be red
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void Update() {
 		//if the player  can be scene then gameover
 		if (CanSeePlayer ()){
@@ -54,8 +65,14 @@ public class EnemyVision : MonoBehaviour {
 		}
 	}
 
-	//CanSeePlayer makes it so that if the player is in the guards view angle than the enemy 
-	//can see the player and if not then it can't see the player
+	// CanSeePlayer ()
+	//if the player is in the guards view angle than the enemy can see the player and if not then it can't see the player
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Bool
+
 	bool CanSeePlayer() {
 		if (Vector3.Distance(transform.position,player.position)< viewDistance) {
 			Vector3 dirToPlayer = (player.position - transform.position).normalized;
@@ -69,9 +86,13 @@ public class EnemyVision : MonoBehaviour {
 		return false;
 	}
 		
-
-	//this make it so you can see the paths in the game inspect and draws a line from path
-	//to path with spheres on each checkpoint
+	// OnDrawGizmos()
+	// this drawns the enemys raycast so the line can be seen in the inspector and the line is blue
+	//
+	//Param:
+	//			None
+	//Return;
+	//			Void
 	void OnDrawGizmos() {
 		Gizmos.color = Color.blue;
 		Gizmos.DrawRay (transform.position, transform.forward * viewDistance);

@@ -7,8 +7,13 @@ using UnityEngine;
 public class ObjectsPickup : MonoBehaviour {
 	//doorToOpen is the door that the pickup is linked to
 	public GameObject doorToOpen;
-
-	//OnTriggerEnter is if the player enters the trigger
+	// OnTriggerEneter
+	//player enters the objects trigger something will happen
+	//
+	//Param:
+	//			Collider Other- The Colldier of any objects that pass into this trigger
+	//Return:
+	//			Void
 	void OnTriggerEnter(Collider other) 
 	{ 
 		//if the object is taged with "Player" than
@@ -20,7 +25,13 @@ public class ObjectsPickup : MonoBehaviour {
 			this.gameObject.SetActive (false);
 		}
 	}
-	//OnDrawGizmo draws a line from the object this script is on to the door it is linked with
+	//  OnDrawGizmos
+	//Draws a line in the Scene view from the pick up to the door link to it
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void OnDrawGizmos () {
 		if (doorToOpen) {
 			//the line color is blue

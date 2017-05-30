@@ -18,7 +18,14 @@ public class EnemyMovement : MonoBehaviour {
 	//pathholder is the path the enemy is going to take
 	public Transform pathHolder;
 
-	//start activates when the game starts
+	//  Start()
+	//Runs during initialisation
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
+
 	void Start () {
 
 		//this piece allows the enemy to know where the checkpoints are and the path to take while
@@ -32,7 +39,13 @@ public class EnemyMovement : MonoBehaviour {
 		StartCoroutine (FollowPath (waypoints));
 		
 	}
-	//FollowPath locates the next waypoint 
+	//  FollowPath()
+	//locates the next waypoint 
+	//
+	//Param:
+	//			Vector3[] waypoints- the waypoints that outline the path the enemy needs to follow
+	//Return:
+	// 			IEnumerator
 	IEnumerator FollowPath(Vector3[] waypoints) {
 		transform.position = waypoints [0];
 		//targetwaypoint targets thje waypoint and looks at its current location
@@ -53,7 +66,13 @@ public class EnemyMovement : MonoBehaviour {
 			yield return null;
 		}
 	}
-	//this makes the enemy know which way to look for the next check point
+	// TurnToFace
+	//this makes the enemy know which way to look for the next check point and face the next checkpoint
+	//
+	//Param:
+	//			Vector3 lookTarget- the target that the enemey must look at, at each checkpoint
+	//Return:
+	//			IEnumerator
 	IEnumerator TurnToFace(Vector3 lookTarget) {
 		Vector3 dirToLookTarget = (lookTarget - transform.position).normalized;
 		float targetAngle = 90 - Mathf.Atan2 (dirToLookTarget.z, dirToLookTarget.x) * Mathf.Rad2Deg;
@@ -65,8 +84,13 @@ public class EnemyMovement : MonoBehaviour {
 			yield return null;
 		}
 	}
-	//this make it so you can see the paths in the game inspect and draws a line from path
-	//to path with spheres on each checkpoint
+	//  OnDrawGizmos
+	//this make it so you can see the paths in the game inspect and draws a line from path to path with spheres on each checkpoint
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
 	void OnDrawGizmos() {
 		Vector3 startPosition = pathHolder.GetChild (0).position;
 		Vector3 previousPosition = startPosition;

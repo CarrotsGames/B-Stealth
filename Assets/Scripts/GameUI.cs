@@ -11,28 +11,59 @@ public class GameUI : MonoBehaviour {
 	//the game over count
 	bool gameIsOver;
 
-	//Start happens on start of game, if the player is spotted the Game Lose screen will appear
+	//	Start()
+	//Runs durimg initialisation
+	//when player is spotted then the Lose game screen will show
+	//Param:
+	//			None
+	//Return:
+	//			Void
+	//
 	void Start () {
 		EnemyVision.OnEnemyHasSpottedPlayer += ShowgameLoseUI;
 		
 	}
-	
-	//Update happens every frame, this makes it so if the player presses space when they lose they casn try again
+	//		Update()
+	//Runs every frame,
+	//if the space bar is clicked when the Lose game screen is up then restart from level 1
+	//Param:
+	//			None
+	//Return:
+	//			Void
+	//
 	void Update () {
 		if (gameIsOver) {
 			//if space is pushed after game over then load main menu
 			if(Input.GetKeyDown (KeyCode.Space)) {
-				//load main menu
+				//load level 1
 				SceneManager.LoadScene (1);
 			}
 			
 		}
 		
 	}
+
+	//		ShowLoseUI ()
+	//runs when player is found
+	//shows the game over screen
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
+
 	//ShowLoseUI will makes it so if the player is spotted the lose screen will appear
 	void ShowgameLoseUI (){
 		OnGameOver (gameLoseUI);
 	}
+	// OnGameOver ()
+	// will loads the game over screen
+	//
+	//Param:
+	//			GameObject- A reference to the game over UI text
+	//Return:
+	//			Void
+
 	//OnGameOver makes it so the game will end and the gameover text will appaer
 	void OnGameOver(GameObject gameOverUI) {
 		if (gameLoseUI) {

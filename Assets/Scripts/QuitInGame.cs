@@ -8,7 +8,13 @@ using UnityEngine.SceneManagement;
 public class QuitInGame : MonoBehaviour {
 	//reference to the player
 	public Transform player;
-	//SaveGameSetting checks the player position and exits the game
+	//	SaveGameSetting() 
+	//checks the player position and exits the game
+	//
+	//Param:
+	//			bool quit- sends player back to the Main Menu
+	//Return:
+	//			Void
 	public void SaveGameSetting(bool Quit) {
 		
 		PlayerPrefs.SetFloat ("x", player.position.x);

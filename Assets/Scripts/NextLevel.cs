@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 //this script loads the next scene
 
 public class NextLevel : MonoBehaviour {
-	
+	//--------------------------------------------------------------------------------------
 	// OnTriggerEnter
 	//player enters the objects trigger something will happen
 	//
@@ -14,6 +14,7 @@ public class NextLevel : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	public void OnTriggerEnter () {
 		//this makes it so the nect level will load and the player will load in
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);

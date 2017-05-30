@@ -20,14 +20,14 @@ public class BabyMovement : MonoBehaviour {
 	private int count;
 	//disabled will disable something
 	bool disabled;
-
+	//--------------------------------------------------------------------------------------
 	//  Start()
 	// Runs during initialisation
 	//Param:
 	//			None
 	//Return:
 	//			Void
-
+	//--------------------------------------------------------------------------------------
 	void Start () {
 		//the count is 1
 		count = 1;
@@ -45,13 +45,14 @@ public class BabyMovement : MonoBehaviour {
 		forward = Vector3.Normalize (forward);
 		right = Quaternion.Euler (new Vector3 (0, 90, 0)) * forward;
 }
-		
+	//--------------------------------------------------------------------------------------	
 	// Update ()
 	// Runs every frame
 	//Param:
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void Update () {
 		//this make it so if the player is spoted the game will cut off the player controls
 		Vector3 inputDirection = Vector3.zero;
@@ -61,24 +62,27 @@ public class BabyMovement : MonoBehaviour {
 				Move ();
 		}
 	}
+	//--------------------------------------------------------------------------------------
 	// Disabled ()
 	//disables functions
 	//Param:
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void Disabled () {
 		//disabled is true
 		disabled = true;
 	
 	}
-
+	//--------------------------------------------------------------------------------------
 	// OnTriggerEnter()
 	//player enters the objects trigger something will happen
 	//Param:
 	//		Collider Other- The Colldier of any objects that pass into this trigger
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void OnTriggerEnter(Collider other) 
 	{
 		// if the player walks into an object that has a tag of Pick Up it will disable the object and add a count to the Text
@@ -90,6 +94,7 @@ public class BabyMovement : MonoBehaviour {
 			SetCountText ();
 		}
 	}
+	//--------------------------------------------------------------------------------------
 	// SetCount()
 	//if the count is equal to zero and then will activate the run and Rocket text
 	//
@@ -97,6 +102,7 @@ public class BabyMovement : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void SetCountText () {
 		//displays Remaining Items Needed on the screen
 		countText.text = "Remaining Items Needed:" + count.ToString ();
@@ -106,6 +112,7 @@ public class BabyMovement : MonoBehaviour {
 			carrotText.text = "Rocket";
 		}
 	}
+	//--------------------------------------------------------------------------------------
 	// OnDestroy ()
 	// destorys object
 	//
@@ -113,10 +120,11 @@ public class BabyMovement : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
-
+	//--------------------------------------------------------------------------------------
 	void OnDestroy(){
 		EnemyVision.OnEnemyHasSpottedPlayer -= Disabled;
 	}
+	//--------------------------------------------------------------------------------------
 	//   Move()
 	//Move allows the player to move correctly with the Isometric camera angle
 	//
@@ -124,6 +132,7 @@ public class BabyMovement : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void Move (){
 		//this set a new keys and new Vertical and Horizontal key to make the player walk up not right aswell as mediate speed
 	//	Vector3 direction = new Vector3 (Input.GetAxis ("HorizontalKey"), 0, Input.GetAxis ("VerticalKey"));

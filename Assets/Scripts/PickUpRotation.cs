@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PickUpRotation : MonoBehaviour {
 
-
+	//--------------------------------------------------------------------------------------
 	//  FixedUpdate() 
 	//happens at a fixed frame
 	//
@@ -14,6 +14,7 @@ public class PickUpRotation : MonoBehaviour {
 	//			None
 	//Return
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void FixedUpdate () {
 		//this rotates the object at a speed of 5, 45, 1 per delayed frame
 		transform.Rotate (new Vector3 (45, 45, 45) * Time.deltaTime);

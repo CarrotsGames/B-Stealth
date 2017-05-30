@@ -13,7 +13,7 @@ public class MenuScript : MonoBehaviour {
 	public Button startText;
 	//exitText is the exit text if exit is clicked
 	public Button exitText;
-
+	//--------------------------------------------------------------------------------------
 	// Start()
 	// Runs during initialisation
 	//
@@ -21,7 +21,7 @@ public class MenuScript : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
-
+	//--------------------------------------------------------------------------------------
 	void Start () {
 		//this calls for the Quit text to appear on the screen
 		quitMenu = quitMenu.GetComponent<Canvas> ();
@@ -32,7 +32,7 @@ public class MenuScript : MonoBehaviour {
 		//this means the game won't load then exit stright away
 		quitMenu.enabled = false;
 	}
-	
+	//--------------------------------------------------------------------------------------
 	// ExitPress () 
 	//will make the game load a sub text
 	//
@@ -40,7 +40,7 @@ public class MenuScript : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
-
+	//--------------------------------------------------------------------------------------
 	public void ExitPress () {
 		//if quit is available then start and exit will be unavilable
 		quitMenu.enabled = true;
@@ -48,6 +48,7 @@ public class MenuScript : MonoBehaviour {
 		exitText.enabled = false;
 		
 	}
+	//--------------------------------------------------------------------------------------
 	//	NoPress () 
 	//if no is pressed then close sub Menu
 	//
@@ -55,7 +56,7 @@ public class MenuScript : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
-
+	//--------------------------------------------------------------------------------------
 	public void NoPress () {
 		//Quit is not available but start and exit are
 		quitMenu.enabled = false;
@@ -63,6 +64,7 @@ public class MenuScript : MonoBehaviour {
 		exitText.enabled = true;
 
 	}
+	//--------------------------------------------------------------------------------------
 	//	StartLevel () 
 	// will load level 1
 	//
@@ -70,11 +72,12 @@ public class MenuScript : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	public void StartLevel() {
 		//this will load Level 1
 		SceneManager.LoadScene ("Level-1");
 	}
-
+	//--------------------------------------------------------------------------------------
 	//	ExitGame()
 	// will close the game
 	//
@@ -82,7 +85,7 @@ public class MenuScript : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
-
+	//--------------------------------------------------------------------------------------
 	public void ExitGame() {
 		//this will end the game and close the window
 		Application.Quit ();

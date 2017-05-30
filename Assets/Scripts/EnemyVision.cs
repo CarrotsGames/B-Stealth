@@ -26,7 +26,7 @@ public class EnemyVision : MonoBehaviour {
 	Transform player;
 	//this is the defult color of the spotlight
 	Color originalSpotLightColour;
-
+	//  --------------------------------------------------------------------------------------
 	// Start()
 	//this checks if the player is in range and sets the default color of the spotlight
 	//Runs during initialisation
@@ -34,12 +34,15 @@ public class EnemyVision : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	// --------------------------------------------------------------------------------------
+
 	void Start() {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		viewAngle = spotlight.spotAngle;
 		originalSpotLightColour = spotlight.color;
 
 	}
+	// --------------------------------------------------------------------------------------
 	// 		Update ()
 	//runs everyframe
 	// this makes it so if the player isnt in the spotlight it will be normal and if the player is in the spotlight it will be red
@@ -47,6 +50,8 @@ public class EnemyVision : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	// --------------------------------------------------------------------------------------
+
 	void Update() {
 		//if the player  can be scene then gameover
 		if (CanSeePlayer ()){
@@ -64,7 +69,7 @@ public class EnemyVision : MonoBehaviour {
 			}
 		}
 	}
-
+	//--------------------------------------------------------------------------------------
 	// CanSeePlayer ()
 	//if the player is in the guards view angle than the enemy can see the player and if not then it can't see the player
 	//
@@ -72,7 +77,7 @@ public class EnemyVision : MonoBehaviour {
 	//			None
 	//Return:
 	//			Bool
-
+	//--------------------------------------------------------------------------------------
 	bool CanSeePlayer() {
 		if (Vector3.Distance(transform.position,player.position)< viewDistance) {
 			Vector3 dirToPlayer = (player.position - transform.position).normalized;
@@ -85,7 +90,7 @@ public class EnemyVision : MonoBehaviour {
 		}
 		return false;
 	}
-		
+	//--------------------------------------------------------------------------------------	
 	// OnDrawGizmos()
 	// this drawns the enemys raycast so the line can be seen in the inspector and the line is blue
 	//
@@ -93,6 +98,7 @@ public class EnemyVision : MonoBehaviour {
 	//			None
 	//Return;
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void OnDrawGizmos() {
 		Gizmos.color = Color.blue;
 		Gizmos.DrawRay (transform.position, transform.forward * viewDistance);

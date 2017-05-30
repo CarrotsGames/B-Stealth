@@ -10,7 +10,7 @@ public class GameUI : MonoBehaviour {
 	public GameObject gameLoseUI;
 	//the game over count
 	bool gameIsOver;
-
+	//	--------------------------------------------------------------------------------------
 	//	Start()
 	//Runs durimg initialisation
 	//when player is spotted then the Lose game screen will show
@@ -19,10 +19,12 @@ public class GameUI : MonoBehaviour {
 	//Return:
 	//			Void
 	//
+	//  --------------------------------------------------------------------------------------
 	void Start () {
 		EnemyVision.OnEnemyHasSpottedPlayer += ShowgameLoseUI;
 		
 	}
+	//   --------------------------------------------------------------------------------------
 	//		Update()
 	//Runs every frame,
 	//if the space bar is clicked when the Lose game screen is up then restart from level 1
@@ -30,7 +32,7 @@ public class GameUI : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
-	//
+	//  --------------------------------------------------------------------------------------
 	void Update () {
 		if (gameIsOver) {
 			//if space is pushed after game over then load main menu
@@ -42,7 +44,7 @@ public class GameUI : MonoBehaviour {
 		}
 		
 	}
-
+	//  --------------------------------------------------------------------------------------
 	//		ShowLoseUI ()
 	//runs when player is found
 	//shows the game over screen
@@ -51,11 +53,13 @@ public class GameUI : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	//  --------------------------------------------------------------------------------------
 
 	//ShowLoseUI will makes it so if the player is spotted the lose screen will appear
 	void ShowgameLoseUI (){
 		OnGameOver (gameLoseUI);
 	}
+	//  --------------------------------------------------------------------------------------
 	// OnGameOver ()
 	// will loads the game over screen
 	//
@@ -63,7 +67,7 @@ public class GameUI : MonoBehaviour {
 	//			GameObject- A reference to the game over UI text
 	//Return:
 	//			Void
-
+	//  --------------------------------------------------------------------------------------
 	//OnGameOver makes it so the game will end and the gameover text will appaer
 	void OnGameOver(GameObject gameOverUI) {
 		if (gameLoseUI) {

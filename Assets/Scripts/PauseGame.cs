@@ -7,7 +7,7 @@ using UnityEngine;
 public class PauseGame : MonoBehaviour {
 	//canvas is the canvas in the scene
 	public Transform canvas;
-
+	//--------------------------------------------------------------------------------------
 	// Update()
 	//Update happens in every frame
 	//
@@ -15,12 +15,14 @@ public class PauseGame : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	void Update () {
 		//this makes it so if the escape key is clicked then the pause void Pause will start
 		if(Input.GetKeyDown(KeyCode.Escape)) {
 			Pause();
 			}
 		}
+	//--------------------------------------------------------------------------------------
 	// Pause()
 	//the timescale of the level go to 0 and stop everything in the game and displays a text
 	//
@@ -28,6 +30,7 @@ public class PauseGame : MonoBehaviour {
 	//			None
 	//Return:
 	//			Void
+	//--------------------------------------------------------------------------------------
 	public void Pause() {
 	//this checks if the the pause scene is up and if it is stop time 
 		if (canvas.gameObject.activeInHierarchy == false) {

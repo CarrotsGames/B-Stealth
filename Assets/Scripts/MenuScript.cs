@@ -7,6 +7,12 @@ using UnityEngine.SceneManagement;
 //this is the Main Menu script that loads Level 1 on start and closes the game if game if Qxit is pressed
 
 public class MenuScript : MonoBehaviour {
+	// the theme menu is the select a theme menu
+	public Canvas thememenu;
+	//the daycaretext is the option daycare
+	public Button daycareText;
+	//the carrottext is the carrot option
+	public Button carrotText;
 	//quitMenu is the quit text
 	public Canvas quitMenu;
 	//startText is the start text if start is clicked
@@ -31,6 +37,7 @@ public class MenuScript : MonoBehaviour {
 		exitText = exitText.GetComponent<Button> ();
 		//this means the game won't load then exit stright away
 		quitMenu.enabled = false;
+		thememenu.enabled = false;
 	}
 	//--------------------------------------------------------------------------------------
 	// ExitPress () 
@@ -46,6 +53,7 @@ public class MenuScript : MonoBehaviour {
 		quitMenu.enabled = true;
 		startText.enabled = false;
 		exitText.enabled = false;
+		thememenu.enabled = false;
 		
 	}
 	//--------------------------------------------------------------------------------------
@@ -62,11 +70,12 @@ public class MenuScript : MonoBehaviour {
 		quitMenu.enabled = false;
 		startText.enabled = true;
 		exitText.enabled = true;
+		thememenu.enabled = false;
 
 	}
 	//--------------------------------------------------------------------------------------
 	//	StartLevel () 
-	// will load level 1
+	// will open theme select
 	//
 	//Param:
 	//			None
@@ -74,8 +83,36 @@ public class MenuScript : MonoBehaviour {
 	//			Void
 	//--------------------------------------------------------------------------------------
 	public void StartLevel() {
+		quitMenu.enabled = false;
+		startText.enabled = false;
+		exitText.enabled = false;
+		thememenu.enabled = true;
 		//this will load Level 1
+
+	}
+	//--------------------------------------------------------------------------------------
+	//	DayCarePress () 
+	// will load level 1
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
+	//--------------------------------------------------------------------------------------
+	public void DayCarePress() {
 		SceneManager.LoadScene ("Level-1");
+	}
+	//--------------------------------------------------------------------------------------
+	//	CarrotPress () 
+	// will load level 1 carrots
+	//
+	//Param:
+	//			None
+	//Return:
+	//			Void
+	//--------------------------------------------------------------------------------------
+	public void CarrotPress() {
+		SceneManager.LoadScene ("Level-1-Carrots");
 	}
 	//--------------------------------------------------------------------------------------
 	//	ExitGame()

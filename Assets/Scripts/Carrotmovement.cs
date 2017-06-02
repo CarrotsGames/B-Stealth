@@ -104,7 +104,7 @@ public class Carrotmovement : MonoBehaviour {
 	void SetCountText () {
 		//displays Remaining Items Needed on the screen
 		countText.text = "Remaining Items Needed:" + count.ToString ();
-		//if the count equals 0 or less then display Run and Rocket
+		//if the count equals 0 or less then display Run and carrot
 		if (count >= 0) {
 			escapeText.text = "Run!";
 			carrotText.text = "Carrot";

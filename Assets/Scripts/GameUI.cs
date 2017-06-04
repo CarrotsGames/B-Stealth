@@ -38,7 +38,7 @@ public class GameUI : MonoBehaviour {
 			//if space is pushed after game over then load main menu
 			if(Input.GetKeyDown (KeyCode.Space)) {
 				//load main menu
-				SceneManager.LoadScene (0);
+				SceneManager.LoadScene (1);
 			}
 			
 		}

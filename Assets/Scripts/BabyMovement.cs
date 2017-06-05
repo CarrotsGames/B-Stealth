@@ -136,8 +136,8 @@ public class BabyMovement : MonoBehaviour {
 	void Move (){
 		//this set a new keys and new Vertical and Horizontal key to make the player walk up not right aswell as mediate speed
 	//	Vector3 direction = new Vector3 (Input.GetAxis ("HorizontalKey"), 0, Input.GetAxis ("VerticalKey"));
-		Vector3 rightMovement = right * speed * Time.deltaTime * Input.GetAxis ("HorizontalKey");
-		Vector3 upMovement = forward * speed * Time.deltaTime * Input.GetAxis ("VerticalKey");
+		Vector3 rightMovement = right * speed  * Time.deltaTime * Input.GetAxis ("HorizontalKey");
+		Vector3 upMovement = forward * speed * 0.5f  * Time.deltaTime * Input.GetAxis ("VerticalKey");
 
 		Vector3 heading = Vector3.Normalize (rightMovement + upMovement);
 

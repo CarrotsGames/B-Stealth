@@ -58,8 +58,16 @@ public class BabyMovement : MonoBehaviour {
 		Vector3 inputDirection = Vector3.zero;
 		if (!disabled) {
 			//if a key is pressed it will call the move function and move
-			if (Input.anyKey)
+			if (Input.GetKey (KeyCode.A)) {
 				Move ();
+
+			} else if (Input.GetKey (KeyCode.W)) {
+				Move ();
+			} else if (Input.GetKey (KeyCode.S)) {
+				Move ();
+			} else if (Input.GetKey (KeyCode.D)) {
+				Move ();
+			}
 		}
 	}
 	//--------------------------------------------------------------------------------------

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 //This script is for the game over screen that will happen when the player is spotted
 
 public class GameUI : MonoBehaviour {
+
 	//the gameover screen
 	public GameObject gameLoseUI;
 	//the game over count
@@ -22,7 +23,6 @@ public class GameUI : MonoBehaviour {
 	//  --------------------------------------------------------------------------------------
 	void Start () {
 		EnemyVision.OnEnemyHasSpottedPlayer += ShowgameLoseUI;
-		
 	}
 	//   --------------------------------------------------------------------------------------
 	//		Update()
@@ -37,8 +37,11 @@ public class GameUI : MonoBehaviour {
 		if (gameIsOver) {
 			//if space is pushed after game over then load main menu
 			if(Input.GetKeyDown (KeyCode.Space)) {
-				//load main menu
-				SceneManager.LoadScene (1);
+				// this action gets the current scene name
+				string sceneName = SceneManager.GetActiveScene ().name;
+				//this action will load the current scene
+				SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+
 			}
 			
 		}

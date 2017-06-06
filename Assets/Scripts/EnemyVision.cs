@@ -11,7 +11,6 @@ public class EnemyVision : MonoBehaviour {
 	//Time before player losses if spoted
 	public float timeToSpotPlayer = .5f;
 
-
 	//These  setting are the Spotlights Distance
 	public Light spotlight;
 	//how far the enemy can see
@@ -104,4 +103,5 @@ public class EnemyVision : MonoBehaviour {
 		Gizmos.DrawRay (transform.position, transform.forward * viewDistance);
 
 	}
+		
 }

@@ -103,10 +103,10 @@ public class Carrotmovement : MonoBehaviour {
 	//--------------------------------------------------------------------------------------
 	void SetCountText () {
 		//displays Remaining Items Needed on the screen
-		countText.text = "Remaining Items Needed:" + count.ToString ();
+		countText.text = "Remaining Gold Carrots To Steal:" + count.ToString ();
 		//if the count equals 0 or less then display Run and carrot
 		if (count >= 0) {
-			escapeText.text = "Run!";
+			escapeText.text = "Escape!";
 			carrotText.text = "Carrot";
 		}
 	}
@@ -135,7 +135,7 @@ public class Carrotmovement : MonoBehaviour {
 		//this set a new keys and new Vertical and Horizontal key to make the player walk up not right aswell as mediate speed
 		//	Vector3 direction = new Vector3 (Input.GetAxis ("HorizontalKey"), 0, Input.GetAxis ("VerticalKey"));
 		Vector3 rightMovement = right * speed * Time.deltaTime * Input.GetAxis ("HorizontalKey");
-		Vector3 upMovement = forward * speed * 0.5f * Time.deltaTime * Input.GetAxis ("VerticalKey");
+		Vector3 upMovement = forward * speed * 1.5f * Time.deltaTime * Input.GetAxis ("VerticalKey");
 
 		Vector3 heading = Vector3.Normalize (rightMovement + upMovement);
 

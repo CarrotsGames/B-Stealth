@@ -25,6 +25,9 @@ public class EnemyVision : MonoBehaviour {
 	Transform player;
 	//this is the defult color of the spotlight
 	Color originalSpotLightColour;
+
+
+
 	//  --------------------------------------------------------------------------------------
 	// Start()
 	//this checks if the player is in range and sets the default color of the spotlight
@@ -103,5 +106,4 @@ public class EnemyVision : MonoBehaviour {
 		Gizmos.DrawRay (transform.position, transform.forward * viewDistance);
 
 	}
-		
 }
